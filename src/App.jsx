@@ -8,6 +8,8 @@ import DeliveryPage from './pages/DeliveryPage/DeliveryPage'
 import PaymentPage from './pages/PaymantPage/PaymentPage'
 import PostsPage from './pages/PostsPage/PostsPage'
 import ProvidersPage from './pages/ProvidersPage/ProvidersPage'
+import ProductDetail from './pages/ProductDetail/ProductDetail.jsx'
+
 
 
 const Layout = () => {
@@ -33,6 +35,7 @@ const App = () => {
           <Route path='/payment' element={<PaymentPage />} />
           <Route path='/articles' element={<PostsPage />} />
           <Route path='/suppliers' element={<ProvidersPage />} />
+          <Route path='/product/:id' element={<ProductDetail />} />
         </Route>
       </Routes>
     </div>

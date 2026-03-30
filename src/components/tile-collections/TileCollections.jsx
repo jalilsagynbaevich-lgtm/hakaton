@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
 const TileCollections = () => {
@@ -37,7 +38,9 @@ const TileCollections = () => {
           return (
             <div
               key={col.collection_id}
-              onClick={() => console.log("Переход в коллекцию:", col.collection_id)}
+              onClick={() => {
+                
+              }}
               className={`relative overflow-hidden group cursor-pointer rounded-sm shadow-sm 
                 ${isLarge ? 'md:col-span-2 md:row-span-2' : 'md:col-span-1 md:row-span-1'}`}
             >

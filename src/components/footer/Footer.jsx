@@ -15,10 +15,8 @@ const Footer = () => {
     <footer className="w-full bg-white pt-12 pb-8 font-sans border-t border-slate-100">
       <div className="container mx-auto px-4">
         
-        {/* Верхняя часть с колонками */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           
-          {/* Колонки категорий */}
           <div className="flex flex-col gap-3">
             {categories.map((item) => (
               <a key={item} href="#" className="text-blue-500 hover:text-blue-700 text-sm transition-colors">
@@ -34,7 +32,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Колонки инфо-ссылок */}
           <div className="flex flex-col gap-3">
             {infoLinks.map((item) => (
               <a key={item} href="#" className="text-blue-500 hover:text-blue-700 text-sm transition-colors">
@@ -43,7 +40,6 @@ const Footer = () => {
             ))}
           </div>
 
-          {/* Контакты и время работы */}
           <div className="flex flex-col items-start gap-4">
             <div className="text-xl font-bold text-slate-800 tracking-tight">
               8 495 018-32-10
@@ -58,14 +54,9 @@ const Footer = () => {
             </div>
             {/* Соцсети */}
             <div className="flex gap-4 mt-2">
-{/* react-icons */}
-              {/* <MessageCircle size={22} className="text-blue-400 cursor-pointer hover:text-blue-600" /> */}
-              {/* <Instagram size={22} className="text-blue-400 cursor-pointer hover:text-blue-600" /> */}
-              {/* <Send size={22} className="text-blue-400 cursor-pointer hover:text-blue-600" /> */}
             </div>
           </div>
 
-          {/* Адрес и рейтинг */}
           <div className="flex flex-col gap-4 lg:items-end">
             <div className="text-sm text-slate-700 lg:text-right">
               <p className="font-bold mb-1">Склад:</p>
@@ -75,7 +66,6 @@ const Footer = () => {
               </a>
             </div>
             
-            {/* Имитация плашки Яндекс Маркета */}
             <div className="mt-4 border border-orange-200 rounded-lg p-3 flex flex-col items-center bg-white shadow-sm w-fit lg:ml-auto">
               <div className="flex items-center gap-1 mb-1">
                 <span className="text-red-500 font-bold text-xs italic">Яндекс</span>
@@ -88,7 +78,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Нижняя юридическая часть */}
         <div className="border-t border-slate-100 pt-8 space-y-4">
           <p className="text-[10px] leading-relaxed text-slate-400 max-w-5xl">
             Копирование всех составляющих частей сайта в какой бы то ни было форме без письменного разрешения владельцев авторских прав запрещено. 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { deliveryIcon, paymentIcon, productsIcon, ratingIcon, warrantyIcon } from '../../assets';
-// Импорты твоих картинок из ассетов
 
 
 
@@ -42,7 +41,6 @@ const Features = () => {
               key={item.id} 
               className="flex items-center lg:flex-col lg:text-center xl:flex-row xl:text-left gap-4 group"
             >
-              {/* Контейнер для иконки */}
               <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center">
                 <img 
                   src={item.icon} 
@@ -51,7 +49,6 @@ const Features = () => {
                 />
               </div>
               
-              {/* Текст */}
               <p className="text-sm md:text-base text-slate-700 leading-tight font-medium">
                 {item.text}
               </p>

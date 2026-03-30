@@ -17,7 +17,7 @@ import dyson from "../../assets/dyson.png"
 import gorenje from "../../assets/gorenje.png"
 import jado from "../../assets/jado.png"
 import lvi from "../../assets/lvi.png"
-
+import locatdela from "../../assets/locatdela.png"
 
 const PopularBrands = () => {
   // Список брендов (названия соответствуют твоему скриншоту)
@@ -39,6 +39,7 @@ const PopularBrands = () => {
     { id: 16, name: 'Gorenje', logo: gorenje },
     { id: 17, name: 'Jado', logo: jado },
     { id: 18, name: 'LVI', logo: lvi },
+    { id: 19, name: 'Locatdela', logo: locatdela },
   ];
 
 

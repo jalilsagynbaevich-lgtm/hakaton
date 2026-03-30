@@ -12,10 +12,14 @@ import {
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { Link } from 'react-router-dom';
+import CartModal from '../cart-modal/CartModal';
+import FavoriteModal from '../favorite-modal/FavoriteModal';
 
 const Header = () => {
     const [isCatalogOpen, setIsCatalogOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isFavOpen, setIsFavOpen] = useState(false);
     const { cart, favorites } = useApp();
     const navLinks = [
         { name: 'Оплата', href: '/payment' },
@@ -25,10 +29,11 @@ const Header = () => {
         { name: 'Контакты', href: '/contacts' },
     ];
 
-    const categories = ['Ванны', 'Раковины'];
+    const categories = ['Ванны', 'Раковины', 'Смесители', 'Душевые кабины', 'Унитазы', 'Биде', 'Аксессуары', 'Плитка', 'Отопление', 'Водонагреватели'];
 
     return (
         <header className="w-full font-sans shadow-sm bg-[#E1EEFB]">
+
             {/* 1. Верхняя панель: прячем на совсем маленьких экранах или адаптируем */}
             <div className=" py-2 border-b border-slate-200 hidden sm:block">
                 <div className="container mx-auto px-4 flex justify-between items-center text-sm text-slate-600">
@@ -54,10 +59,15 @@ const Header = () => {
                     </div>
 
                     <nav className="hidden lg:flex items-center gap-5">
+                        {/* Было: <a key={link.name} href={link.href} ... */}
                         {navLinks.map((link) => (
-                            <a key={link.name} href={link.href} className="hover:text-blue-600 transition-colors">
+                            <Link
+                                key={link.name}
+                                to={link.href}
+                                className="hover:text-blue-600 transition-colors"
+                            >
                                 {link.name}
-                            </a>
+                            </Link>
                         ))}
                     </nav>
                 </div>
@@ -74,10 +84,7 @@ const Header = () => {
                             className="lg:hidden p-2 text-blue-800"
                         >
                             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                        </button>
-
-
-                        {/* Кнопка каталога (только десктоп) */}
+                        </button>{/* Кнопка каталога (только десктоп) */}
                         <div className="relative hidden lg:flex">
                             <button
                                 onClick={() => setIsCatalogOpen(!isCatalogOpen)}
@@ -87,13 +94,11 @@ const Header = () => {
                                 КАТАЛОГ
                             </button>
                             <button
-                                onClick={() => setIsCatalogOpen(!isCatalogOpen)}
                                 className="bg-[#1061AB] hover:bg-blue-900 text-white px-5 py-3 flex items-center gap-3 transition font-medium uppercase text-sm"
                             >
                                 АКЦИИ
                             </button>
                             <button
-                                onClick={() => setIsCatalogOpen(!isCatalogOpen)}
                                 className="bg-[#2B7BC6] hover:bg-blue-900 text-white px-5 py-3  flex items-center gap-3 transition font-medium uppercase text-sm"
                             >
                                 БРЕНДЫ
@@ -126,18 +131,37 @@ const Header = () => {
                                 <User size={24} className="text-blue-500" />
                             </div>
 
-                            <div className="relative p-2 hover:bg-slate-100 rounded-full cursor-pointer">
-                                <Heart size={24} className="text-blue-500" />
-                                <span className="absolute top-0 right-0 bg-yellow-400 text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full border-2 border-white">
-                                    {favorites.length}
-                                </span>
+                            <div
+                                className="relative p-2 hover:bg-slate-100 rounded-full cursor-pointer group"
+                                onClick={() => setIsFavOpen(!isFavOpen)}
+                            >
+                                <Heart size={24} className="text-slate-400 group-hover:text-red-500 transition-colors" />
+                                {favorites.length > 0 && (
+                                    <span className="absolute top-0 right-0 bg-red-500 text-[10px] font-bold text-white w-4 h-4 flex items-center justify-center rounded-full border-2 border-white">
+                                        {favorites.length}
+                                    </span>
+                                )}
+                                <FavoriteModal
+                                    isOpen={isFavOpen}
+                                    onClose={() => setIsFavOpen(false)}
+                                    favoriteItems={favorites}
+                                />
                             </div>
-
-                            <div className="relative p-2 hover:bg-slate-100 rounded-full cursor-pointer">
+                            <div
+                                className="relative p-2 hover:bg-slate-100 rounded-full cursor-pointer"
+                                onClick={() => setIsCartOpen(!isCartOpen)}
+                            >
                                 <ShoppingCart size={24} className="text-blue-500" />
                                 <span className="absolute top-0 right-0 bg-yellow-400 text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full border-2 border-white">
                                     {cart.length}
                                 </span>
+
+                                {/* Модалка теперь «приклеена» к этой кнопке */}
+                                <CartModal
+                                    isOpen={isCartOpen}
+                                    onClose={() => setIsCartOpen(false)}
+                                    cartItems={cart}
+                                />
                             </div>
                         </div>
                     </div>
@@ -170,7 +194,14 @@ const Header = () => {
 
                         <div className="font-bold text-lg border-b pb-2 pt-4">Информация</div>
                         {navLinks.map(link => (
-                            <a key={link.name} href={link.href} className="block text-slate-600">{link.name}</a>
+                            <Link
+                                key={link.name}
+                                to={link.href}
+                                onClick={() => setIsMobileMenuOpen(false)} // Закрываем меню при клике
+                                className="block text-slate-600"
+                            >
+                                {link.name}
+                            </Link>
                         ))}
                     </div>
                 </div>

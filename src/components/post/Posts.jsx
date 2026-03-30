@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Стили Swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -25,14 +24,12 @@ const Posts = () => {
 
   return (
     <section className="container mx-auto px-4 py-12 relative group">
-      {/* Заголовок с синей линией */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold uppercase tracking-tight border-b-2 border-blue-600 inline-block pb-1">
           Статьи
         </h2>
       </div>
 
-      {/* Контейнер для слайдера и кастомных кнопок */}
       <div className="relative">
         <Swiper
           modules={[Navigation]}
@@ -51,7 +48,6 @@ const Posts = () => {
           {posts.map((post) => (
             <SwiperSlide key={post.id}>
               <div className="flex flex-col h-full cursor-pointer group/card">
-                {/* Картинка */}
                 <div className="aspect-[4/3] overflow-hidden mb-4 rounded-sm">
                   <img
                     src={post.image}
@@ -60,7 +56,6 @@ const Posts = () => {
                   />
                 </div>
                 
-                {/* Заголовок */}
                 <h3 className="text-[15px] font-bold text-slate-900 leading-snug group-hover/card:text-blue-600 transition-colors line-clamp-2">
                   {post.title}
                 </h3>
@@ -69,7 +64,6 @@ const Posts = () => {
           ))}
         </Swiper>
 
-        {/* Кнопки навигации как на скриншоте */}
         <button className="posts-prev absolute left-[-15px] top-[35%] -translate-y-1/2 z-10 bg-black/5 hover:bg-black/10 p-2 transition-all">
           <ChevronLeft size={24} className="text-slate-800" />
         </button>

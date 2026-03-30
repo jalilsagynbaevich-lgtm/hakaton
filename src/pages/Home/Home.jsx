@@ -6,6 +6,7 @@ import SalesHits from '../../components/sales-hits/SalesHits'
 import PopularBrands from '../../components/popular-brands/PopularBrands'
 import Posts from '../../components/post/Posts'
 import SeoBlock from '../../components/seo-block/SeoBlock'
+import DeliveryPage from '../DeliveryPage/DeliveryPage'
 
 const Home = () => {
   return (
