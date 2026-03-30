@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const PaymentPage = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 font-sans text-slate-800">
-      {/* Хлебные крошки */}
       <nav className="text-sm text-slate-500 mb-6">
         <Link to="/" className="hover:text-blue-600">Главная</Link>
         <span className="mx-2 text-slate-400">›</span>
@@ -13,7 +12,6 @@ const PaymentPage = () => {
 
       <h1 className="text-3xl font-bold mb-8">Оплата</h1>
 
-      {/* Основной блок с рамкой */}
       <div className="border border-slate-400 p-6 mb-12">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-black">Оплата наличными:</h2>
@@ -44,7 +42,6 @@ const PaymentPage = () => {
         </section>
       </div>
 
-      {/* Блок Обратите внимание */}
       <section className="mt-10">
         <div className="flex items-start gap-2">
           <span className="text-2xl font-bold mt-[-4px]">•</span>

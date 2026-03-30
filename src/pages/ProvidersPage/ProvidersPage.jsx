@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const ProvidersPage = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 font-sans text-slate-800">
-      {/* Хлебные крошки */}
       <nav className="text-sm text-slate-500 mb-6">
         <Link to="/" className="hover:text-blue-600 transition">Главная</Link>
         <span className="mx-2 text-slate-400">›</span>
@@ -13,7 +12,6 @@ const ProvidersPage = () => {
 
       <h1 className="text-3xl font-bold mb-8 text-black">Для поставщиков</h1>
 
-      {/* Изображение (контейнеры) */}
       <div className="w-full mb-8 overflow-hidden rounded-sm border border-slate-200">
         <img 
           src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000" 
@@ -22,7 +20,6 @@ const ProvidersPage = () => {
         />
       </div>
 
-      {/* Текстовый блок */}
       <div className="space-y-6 text-lg leading-relaxed text-slate-700">
         <p>
           Наша компания динамично развивается на рынке товаров для дома, сантехники, 
@@ -38,7 +35,6 @@ const ProvidersPage = () => {
         <p className="font-medium text-black italic">Удачных продаж!</p>
       </div>
 
-      {/* Форма сотрудничества (упоминается в тексте) */}
       <div className="mt-12 bg-slate-50 p-6 md:p-8 rounded-lg border border-slate-200">
         <h3 className="text-xl font-bold mb-6">Стать поставщиком</h3>
         <form className="grid grid-cols-1 md:grid-cols-2 gap-4">

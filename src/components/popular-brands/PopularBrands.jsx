@@ -20,7 +20,6 @@ import lvi from "../../assets/lvi.png"
 import locatdela from "../../assets/locatdela.png"
 
 const PopularBrands = () => {
-  // Список брендов (названия соответствуют твоему скриншоту)
   const brands = [
     { id: 1, name: 'Hansgrohe', logo: HansLogo },
     { id: 2, name: 'Grohe', logo: GroheLogo },
@@ -45,14 +44,12 @@ const PopularBrands = () => {
 
   return (
     <section className="container mx-auto px-4 py-12 bg-[#f8fafc]">
-      {/* Заголовок с синей линией как на макете */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold uppercase tracking-tight border-b-2 border-blue-600 inline-block pb-1">
           Популярные бренды
         </h2>
       </div>
 
-      {/* Сетка брендов */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 lg:grid-cols-6 border-t border-l border-slate-100">
         {brands.map((brand) => (
           <div 
@@ -66,7 +63,6 @@ const PopularBrands = () => {
                 className="max-w-full max-h-full grayscale group-hover:grayscale-0 transition-all duration-300 object-contain"
               />
             ) : (
-              // Заглушка, если лого еще не импортировано
               <span className="text-slate-400 font-bold group-hover:text-blue-600 transition-colors uppercase text-sm">
                 {brand.name}
               </span>

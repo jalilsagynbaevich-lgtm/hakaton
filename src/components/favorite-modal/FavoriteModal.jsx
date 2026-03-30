@@ -4,17 +4,14 @@ import { X, Heart } from 'lucide-react';
 const FavoriteModal = ({ isOpen, onClose, favoriteItems }) => {
     if (!isOpen) return null;
 
-    // Используем переданные айтемы или пустой массив
     const displayItems = favoriteItems || [];
 
     return (
-        /* Absolute позиционирование под иконкой сердца */
         <div 
             className="absolute top-full right-0 mt-2 w-[320px] md:w-[400px] bg-white shadow-2xl rounded-sm border border-slate-100 z-[1000] animate-in fade-in zoom-in-95 duration-200"
-            onClick={(e) => e.stopPropagation()} // Чтобы не закрывалось при клике внутри
+            onClick={(e) => e.stopPropagation()} 
         >
             
-            {/* Заголовок */}
             <div className="p-4 border-b border-slate-50 flex justify-between items-center">
                 <div className="flex items-center gap-2">
                     <Heart size={16} className="text-red-500 fill-red-500" />
@@ -25,7 +22,6 @@ const FavoriteModal = ({ isOpen, onClose, favoriteItems }) => {
                 </button>
             </div>
 
-            {/* Список товаров */}
             <div className="max-h-[350px] overflow-y-auto p-4 space-y-4">
                 {displayItems.length > 0 ? (
                     displayItems.map(item => (
@@ -42,7 +38,6 @@ const FavoriteModal = ({ isOpen, onClose, favoriteItems }) => {
                                     )}
                                 </div>
                             </div>
-                            {/* Кнопка быстрого удаления из избранного можно добавить тут */}
                         </div>
                     ))
                 ) : (
@@ -52,7 +47,6 @@ const FavoriteModal = ({ isOpen, onClose, favoriteItems }) => {
                 )}
             </div>
 
-            {/* Футер */}
             <div className="p-4 bg-slate-50">
                 <button 
                     className="w-full bg-slate-900 hover:bg-black text-white text-sm font-bold py-3 rounded-sm transition-all uppercase"

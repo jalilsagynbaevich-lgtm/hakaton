@@ -3,7 +3,6 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  // Инициализируем состояния сразу из localStorage, чтобы не было "прыжка" данных
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem('cart');
     return savedCart ? JSON.parse(savedCart) : [];
@@ -19,7 +18,6 @@ export const AppProvider = ({ children }) => {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
-  // --- Эффекты для сохранения при изменениях ---
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
@@ -36,7 +34,6 @@ export const AppProvider = ({ children }) => {
     }
   }, [user]);
 
-  // --- Функции для КОРЗИНЫ ---
   const addToCart = (product) => {
     setCart((prevCart) => {
       const isExist = prevCart.find((item) => item.id === product.id);
@@ -57,7 +54,6 @@ export const AppProvider = ({ children }) => {
 
   const clearCart = () => setCart([]);
 
-  // --- Функции для ИЗБРАННОГО ---
   const toggleFavorite = (product) => {
     setFavorites((prevFavs) => {
       const isExist = prevFavs.find((item) => item.id === product.id);
@@ -72,7 +68,6 @@ export const AppProvider = ({ children }) => {
     setFavorites((prevFavs) => prevFavs.filter((item) => item.id !== productId));
   };
 
-  // --- Функции для ПОЛЬЗОВАТЕЛЯ ---
   const login = (userData) => setUser(userData);
   const logout = () => setUser(null);
 

@@ -3,13 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const Hero = () => {
-  // Mock данные 5 слайдов с реальными фото
   const mockSlides = [
     {
       id: 1,
@@ -30,7 +28,7 @@ const Hero = () => {
       title: "МЕБЕЛЬ ДЛЯ ВАННОЙ",
       subtitle: "Стильные решения для хранения",
       buttonText: "СМОТРЕТЬ",
-      image: "https://images.unsplash.com/photo-1620626011761-9963d7521476?q=80&w=2070&auto=format&fit=crop",
+      image: "https://ir.ozone.ru/s3/multimedia-1-3/7264005087.jpg",
     },
     {
       id: 4,
@@ -52,7 +50,6 @@ const Hero = () => {
     <section className="container mx-auto px-4 py-6">
       <div className="flex flex-col lg:flex-row gap-4 h-[380px]">
         
-        {/* ЛЕВАЯ ЧАСТЬ: Swiper Slider */}
         <div className="w-full lg:w-2/3 relative group overflow-hidden rounded-md shadow-lg">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
@@ -73,15 +70,12 @@ const Hero = () => {
             {mockSlides.map((slide) => (
               <SwiperSlide key={slide.id}>
                 <div className="relative h-full w-full flex items-center px-12 md:px-20 overflow-hidden">
-                  {/* Фоновая картинка */}
                   <div 
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                     style={{ backgroundImage: `url(${slide.image})` }}
                   />
-                  {/* Синий оверлей для текста (как на макете) */}
                   <div className="absolute inset-0 bg-[#005294]/60 mix-blend-multiply" />
                   
-                  {/* Контент */}
                   <div className="relative z-10 text-white max-w-lg">
                     <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter uppercase leading-none drop-shadow-md">
                       {slide.title}
@@ -98,7 +92,6 @@ const Hero = () => {
             ))}
           </Swiper>
 
-          {/* Стрелки навигации */}
           <button className="prev-btn absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white transition-all transform hover:scale-110">
             <ChevronLeft size={60} strokeWidth={1} />
           </button>
@@ -106,11 +99,9 @@ const Hero = () => {
             <ChevronRight size={60} strokeWidth={1} />
           </button>
 
-          {/* Пагинация */}
           <div className="custom-pagination absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3"></div>
         </div>
 
-        {/* ПРАВАЯ ЧАСТЬ: Статика */}
         <div className="w-full lg:w-1/3 flex flex-col gap-4">
           
           <div className="h-1/2 bg-[#1565AC] relative overflow-hidden p-8 pr-15 flex flex-col justify-center items-end text-center text-white rounded-md hover:brightness-110 transition group cursor-pointer">
@@ -121,7 +112,6 @@ const Hero = () => {
                 Подробнее
               </span>
             </div>
-            {/* Имитация текстуры на фоне */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 -mr-10 -mt-10 rounded-full blur-3xl" />
           </div>
 
@@ -132,7 +122,6 @@ const Hero = () => {
                 Смотреть все
               </span>
             </div>
-            {/* Имитация текстуры */}
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-black/5 -ml-10 -mb-10 rounded-full blur-3xl" />
           </div>
 

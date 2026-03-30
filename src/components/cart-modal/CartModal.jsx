@@ -19,7 +19,6 @@ const CartModal = ({ isOpen, onClose, cartItems }) => {
 
 
     return (
-        /* absolute позиционирование относительно иконки */
         <div className="absolute top-full right-0 mt-2 w-[320px] md:w-[400px] bg-white shadow-2xl rounded-sm border border-slate-100 z-[1000] animate-in fade-in zoom-in-95 duration-200">
             
             {/* Заголовок */}
@@ -30,7 +29,6 @@ const CartModal = ({ isOpen, onClose, cartItems }) => {
                 </button>
             </div>
 
-            {/* Список товаров */}
             <div className="max-h-[300px] overflow-y-auto p-4 space-y-4">
                 {displayItems.map(item => (
                     <div key={item.id} className="flex gap-3 border-b border-slate-50 pb-3 last:border-0">
@@ -48,7 +46,6 @@ const CartModal = ({ isOpen, onClose, cartItems }) => {
                 ))}
             </div>
 
-            {/* Футер с кнопкой */}
             <div className="p-4 bg-slate-50">
                 <div className="flex justify-between items-center mb-4">
                     <span className="text-sm text-slate-600">Итого:</span>
@@ -64,18 +61,3 @@ const CartModal = ({ isOpen, onClose, cartItems }) => {
 
 export default CartModal;
 
-/*
-{
-    "id": 1,
-    "category": "Раковины",
-    "name": "Раковина Roca Debba 32799400Y, 60x48 см",
-    "brand": "Roca",
-    "country": "Испания",
-    "price": 2601,
-    "old_price": null,
-    "rating": 5,
-    "reviews_count": 12,
-    "badge": "ХИТ",
-    "image_url": "https://avatars.mds.yandex.net/get-marketpic/5967024/pic6398a707e2f558da7540b6cd46bdd8fc/orig"
-}
-*/

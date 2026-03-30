@@ -34,7 +34,6 @@ const Header = () => {
     return (
         <header className="w-full font-sans shadow-sm bg-[#E1EEFB]">
 
-            {/* 1. Верхняя панель: прячем на совсем маленьких экранах или адаптируем */}
             <div className=" py-2 border-b border-slate-200 hidden sm:block">
                 <div className="container mx-auto px-4 flex justify-between items-center text-sm text-slate-600">
                     <Link to="/" className="">
@@ -59,7 +58,6 @@ const Header = () => {
                     </div>
 
                     <nav className="hidden lg:flex items-center gap-5">
-                        {/* Было: <a key={link.name} href={link.href} ... */}
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
@@ -78,13 +76,12 @@ const Header = () => {
                 <div className="container mx-auto px-4 py-3 lg:py-5">
                     <div className="flex items-center justify-between gap-4">
 
-                        {/* Бургер для мобилки (появляется только на мобилках) */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="lg:hidden p-2 text-blue-800"
                         >
                             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                        </button>{/* Кнопка каталога (только десктоп) */}
+                        </button>
                         <div className="relative hidden lg:flex">
                             <button
                                 onClick={() => setIsCatalogOpen(!isCatalogOpen)}
@@ -115,7 +112,6 @@ const Header = () => {
                             )}
                         </div>
 
-                        {/* Поиск (на мобилках прячется в иконку или выносится ниже) */}
                         <div className="bg-white hidden md:flex flex-grow max-w-xl relative">
                             <input
                                 type="text"
@@ -125,10 +121,11 @@ const Header = () => {
                             <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-500 cursor-pointer" size={20} />
                         </div>
 
-                        {/* Иконки пользователя */}
                         <div className="flex items-center gap-2 sm:gap-4">
                             <div className="p-2 hover:bg-slate-100 rounded-full cursor-pointer hidden sm:block">
-                                <User size={24} className="text-blue-500" />
+                                <Link to="/auth">
+                                    <User size={24} className="text-blue-500" />
+                                </Link>
                             </div>
 
                             <div
@@ -156,7 +153,6 @@ const Header = () => {
                                     {cart.length}
                                 </span>
 
-                                {/* Модалка теперь «приклеена» к этой кнопке */}
                                 <CartModal
                                     isOpen={isCartOpen}
                                     onClose={() => setIsCartOpen(false)}
@@ -166,7 +162,6 @@ const Header = () => {
                         </div>
                     </div>
 
-                    {/* Поиск для мобилок (показываем только на очень маленьких экранах под лого) */}
                     <div className="mt-3 md:hidden relative">
                         <input
                             type="text"
@@ -178,7 +173,6 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* 3. Мобильное меню (выезжает при клике на бургер) */}
             {isMobileMenuOpen && (
                 <div className="lg:hidden fixed inset-0 z-[100] bg-white p-6 animate-in slide-in-from-left duration-300">
                     <div className="flex justify-between items-center mb-8">
@@ -197,7 +191,7 @@ const Header = () => {
                             <Link
                                 key={link.name}
                                 to={link.href}
-                                onClick={() => setIsMobileMenuOpen(false)} // Закрываем меню при клике
+                                onClick={() => setIsMobileMenuOpen(false)}
                                 className="block text-slate-600"
                             >
                                 {link.name}

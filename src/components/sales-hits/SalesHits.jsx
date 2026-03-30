@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { Star, MessageSquare, Heart, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useApp } from '../../context/AppContext'; // Подключаем твой контекст
+import { useApp } from '../../context/AppContext'; 
 
-// Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Link } from 'react-router-dom';
 
 const SalesHits = () => {
   const { addToCart, toggleFavorite, favorites } = useApp();
@@ -15,7 +15,6 @@ const SalesHits = () => {
   const [activeCategory, setActiveCategory] = useState('Любые товары');
   const [loading, setLoading] = useState(true);
 
-  // Категории для табов
   const categories = [
     'Любые товары', 'Раковины', 'Ванны', 'Унитазы', 
     'Душевые системы', 'Смесители', 'Зеркала', 
@@ -32,7 +31,6 @@ const SalesHits = () => {
       });
   }, []);
 
-  // Фильтрация
   useEffect(() => {
     if (activeCategory === 'Любые товары') {
       setFilteredProducts(products);
@@ -50,7 +48,6 @@ const SalesHits = () => {
           Хиты продаж
         </h2>
 
-        {/* Табы категорий (Адаптивный скролл) */}
         <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
           {categories.map(cat => (
             <button
@@ -68,7 +65,6 @@ const SalesHits = () => {
         </div>
       </div>
 
-      {/* Слайдер товаров */}
       <div className="relative group">
         <Swiper
           modules={[Navigation]}
@@ -89,7 +85,6 @@ const SalesHits = () => {
             <SwiperSlide key={product.id}>
               <div className="bg-white border border-slate-100 rounded-sm p-4 h-full flex flex-col hover:shadow-xl transition-shadow relative group/card">
                 
-                {/* Бейджи (Хит/Акция) */}
                 <div className="absolute top-2 left-2 z-10 flex flex-col gap-1">
                   {product.badge === 'ХИТ' && (
                     <span className="bg-yellow-400 text-[10px] font-bold px-2 py-0.5 uppercase tracking-tighter">ХИТ</span>
@@ -99,7 +94,6 @@ const SalesHits = () => {
                   )}
                 </div>
 
-                {/* Избранное */}
                 <button 
                   onClick={() => toggleFavorite(product)}
                   className="absolute top-2 right-2 z-10 p-2 rounded-full hover:bg-slate-50 transition"
@@ -110,22 +104,22 @@ const SalesHits = () => {
                   />
                 </button>
 
-                {/* Изображение */}
                 <div className="relative aspect-square mb-4 overflow-hidden">
                   <img 
                     src={product.image_url} 
                     alt={product.name}
                     className="w-full h-full object-contain mix-blend-multiply transition-transform group-hover/card:scale-105"
                   />
-                  {/* Кнопка Быстрый просмотр при наведении */}
                   <div className="absolute inset-0 bg-blue-500/20 opacity-0 group-hover/card:opacity-100 transition flex items-center justify-center pointer-events-none md:pointer-events-auto">
+                   
+                   <Link to={`/product/${product.id}`} state={product} className="bg-blue-500/80 text-white text-xs font-bold py-2 px-4 rounded-sm backdrop-blur-sm">
                     <button className="bg-blue-500/80 text-white text-xs font-bold py-2 px-4 rounded-sm backdrop-blur-sm hidden md:block">
                       БЫСТРЫЙ ПРОСМОТР
                     </button>
+                   </Link>
                   </div>
                 </div>
 
-                {/* Инфо */}
                 <div className="flex flex-col flex-grow">
                   <div className="flex items-center gap-4 mb-2">
                     <div className="flex items-center text-yellow-400">
@@ -170,7 +164,6 @@ const SalesHits = () => {
           ))}
         </Swiper>
 
-        {/* Навигация слайдера */}
         <button className="hits-prev absolute left-[-20px] top-1/2 -translate-y-1/2 z-20 bg-slate-100 p-3 rounded-sm shadow-md hover:bg-white transition hidden xl:flex">
           <ChevronLeft size={24} className="text-slate-600" />
         </button>
