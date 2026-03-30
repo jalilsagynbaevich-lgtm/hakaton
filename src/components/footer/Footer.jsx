@@ -52,7 +52,6 @@ const Footer = () => {
               <p><span className="font-semibold">Сб:</span> 10:00 — 18:00</p>
               <p><span className="font-semibold text-red-400">Вс:</span> выходной</p>
             </div>
-            {/* Соцсети */}
             <div className="flex gap-4 mt-2">
             </div>
           </div>

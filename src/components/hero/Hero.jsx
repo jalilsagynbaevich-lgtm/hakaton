@@ -47,8 +47,8 @@ const Hero = () => {
   ];
 
   return (
-    <section className="container mx-auto px-4 py-6">
-      <div className="flex flex-col lg:flex-row gap-4 h-[380px]">
+    <section className="container mx-auto px-4  py-6">
+      <div className="flex flex-col lg:flex-row gap-4  h-[380px]">
         
         <div className="w-full lg:w-2/3 relative group overflow-hidden rounded-md shadow-lg">
           <Swiper
@@ -69,7 +69,7 @@ const Hero = () => {
           >
             {mockSlides.map((slide) => (
               <SwiperSlide key={slide.id}>
-                <div className="relative h-full w-full flex items-center px-12 md:px-20 overflow-hidden">
+                <div className="relative h-full  w-full flex items-center px-12 md:px-20 overflow-hidden">
                   <div 
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                     style={{ backgroundImage: `url(${slide.image})` }}
@@ -104,7 +104,7 @@ const Hero = () => {
 
         <div className="w-full lg:w-1/3 flex flex-col gap-4">
           
-          <div className="h-1/2 bg-[#1565AC] relative overflow-hidden p-8 pr-15 flex flex-col justify-center items-end text-center text-white rounded-md hover:brightness-110 transition group cursor-pointer">
+          <div className="h-1/2 bg-[#1565AC] relative overflow-hidden p-8 md:pr-15 flex flex-col justify-center md:items-end text-center text-white rounded-md hover:brightness-110 transition group cursor-pointer">
             <div className="relative z-10">
               <h3 className="text-2xl font-black uppercase tracking-widest mb-2">Унитазы</h3>
               <p className="text-xl font-bold mb-4 italic text-white/90">до 10 000 ₽</p>
@@ -115,7 +115,7 @@ const Hero = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 -mr-10 -mt-10 rounded-full blur-3xl" />
           </div>
 
-          <div className="h-1/2 bg-[#48BDB8] relative overflow-hidden p-8 pr-15 flex flex-col justify-center items-end text-center text-white rounded-md hover:brightness-105 transition group cursor-pointer">
+          <div className="h-1/2 bg-[#48BDB8] relative overflow-hidden p-8  flex flex-col justify-center md:items-end text-center text-white rounded-md hover:brightness-105 transition group cursor-pointer">
             <div className="relative z-10">
               <h3 className="text-2xl font-black uppercase tracking-widest mb-4 leading-tight">Товары<br/>со скидкой</h3>
               <span className="text-xs font-bold border-b-2 border-white/50 pb-1 uppercase tracking-widest group-hover:border-white transition-colors">

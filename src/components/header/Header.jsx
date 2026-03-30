@@ -71,7 +71,6 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* 2. Основная панель */}
             <div className=" border-b lg:border-none">
                 <div className="container mx-auto px-4 py-3 lg:py-5">
                     <div className="flex items-center justify-between gap-4">
