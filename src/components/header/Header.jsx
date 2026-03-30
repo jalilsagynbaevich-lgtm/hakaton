@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import logo from '../../assets/logo.svg';
 import {
     MapPin,
     Phone,
@@ -38,7 +39,10 @@ const Header = () => {
                 <div className="container mx-auto px-4 flex justify-between items-center text-sm text-slate-600">
                     <Link to="/" className="">
                         <div className="flex-shrink-0 flex items-center gap-1 scale-90 sm:scale-100">
-                            <div className="text-blue-800 font-black italic px-2 py-1 text-xl md:text-2xl rounded">GG</div>
+                            <div className="text-blue-800 flex font-black italic px-2 py-1 text-xl md:text-2xl rounded">
+                                <img src={logo} alt="Promarket" />
+                                <img src={logo} alt="Promarket" />
+                            </div>
                             <div className="bg-red-500 text-white font-bold px-3 py-1 text-lg md:text-xl rounded uppercase tracking-tighter">
                                 Promarket
                             </div>

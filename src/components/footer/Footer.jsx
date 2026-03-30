@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../assets/logo.svg';
 
 
 const Footer = () => {
@@ -25,7 +26,10 @@ const Footer = () => {
             ))}
             <div className="mt-6">
               <div className="flex items-center gap-1 mb-2">
-                <div className="text-blue-800 font-black italic px-1.5 py-0.5 text-lg rounded">GG</div>
+                <div className="text-blue-800 flex font-black italic px-1.5 py-0.5 text-lg rounded">
+                  <img className='w-[30px]' src={logo} alt="Promarket" />
+                  <img className='w-[30px]' src={logo} alt="Promarket" />
+                </div>
                 <div className="bg-red-500 text-white font-bold px-2 py-0.5 text-sm rounded uppercase">Promarket</div>
               </div>
               <p className="text-slate-400 text-xs">© 2020 ggpromarket.ru</p>
