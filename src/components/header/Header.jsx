@@ -17,6 +17,7 @@ const Header = () => {
     const [isCatalogOpen, setIsCatalogOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const { cart, favorites } = useApp();
+    
     const navLinks = [
         { name: 'Оплата', href: '/payment' },
         { name: 'Доставка', href: '/delivery' },
@@ -29,8 +30,8 @@ const Header = () => {
 
     return (
         <header className="w-full font-sans shadow-sm bg-[#E1EEFB]">
-            {/* 1. Верхняя панель: прячем на совсем маленьких экранах или адаптируем */}
-            <div className=" py-2 border-b border-slate-200 hidden sm:block">
+            {/* 1. Верхняя панель */}
+            <div className="py-2 border-b border-slate-200 hidden sm:block">
                 <div className="container mx-auto px-4 flex justify-between items-center text-sm text-slate-600">
                     <Link to="/" className="">
                         <div className="flex-shrink-0 flex items-center gap-1 scale-90 sm:scale-100">
@@ -55,20 +56,24 @@ const Header = () => {
 
                     <nav className="hidden lg:flex items-center gap-5">
                         {navLinks.map((link) => (
-                            <a key={link.name} href={link.href} className="hover:text-blue-600 transition-colors">
+                            <Link 
+                                key={link.name} 
+                                to={link.href} 
+                                className="hover:text-blue-600 transition-colors"
+                            >
                                 {link.name}
-                            </a>
+                            </Link>
                         ))}
                     </nav>
                 </div>
             </div>
 
             {/* 2. Основная панель */}
-            <div className=" border-b lg:border-none">
+            <div className="border-b lg:border-none">
                 <div className="container mx-auto px-4 py-3 lg:py-5">
                     <div className="flex items-center justify-between gap-4">
 
-                        {/* Бургер для мобилки (появляется только на мобилках) */}
+                        {/* Бургер для мобилки */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                             className="lg:hidden p-2 text-blue-800"
@@ -76,26 +81,19 @@ const Header = () => {
                             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
 
-
-                        {/* Кнопка каталога (только десктоп) */}
+                        {/* Кнопки каталога и акций (десктоп) */}
                         <div className="relative hidden lg:flex">
                             <button
                                 onClick={() => setIsCatalogOpen(!isCatalogOpen)}
-                                className="bg-[#004C93] hover:bg-blue-900 text-white px-5 py-3  flex items-center gap-3 transition font-medium uppercase text-sm"
+                                className="bg-[#004C93] hover:bg-blue-900 text-white px-5 py-3 flex items-center gap-3 transition font-medium uppercase text-sm"
                             >
                                 {isCatalogOpen ? <X size={18} /> : <Menu size={18} />}
                                 КАТАЛОГ
                             </button>
-                            <button
-                                onClick={() => setIsCatalogOpen(!isCatalogOpen)}
-                                className="bg-[#1061AB] hover:bg-blue-900 text-white px-5 py-3 flex items-center gap-3 transition font-medium uppercase text-sm"
-                            >
+                            <button className="bg-[#1061AB] hover:bg-blue-900 text-white px-5 py-3 flex items-center gap-3 transition font-medium uppercase text-sm">
                                 АКЦИИ
                             </button>
-                            <button
-                                onClick={() => setIsCatalogOpen(!isCatalogOpen)}
-                                className="bg-[#2B7BC6] hover:bg-blue-900 text-white px-5 py-3  flex items-center gap-3 transition font-medium uppercase text-sm"
-                            >
+                            <button className="bg-[#2B7BC6] hover:bg-blue-900 text-white px-5 py-3 flex items-center gap-3 transition font-medium uppercase text-sm">
                                 БРЕНДЫ
                             </button>
 
@@ -110,7 +108,7 @@ const Header = () => {
                             )}
                         </div>
 
-                        {/* Поиск (на мобилках прячется в иконку или выносится ниже) */}
+                        {/* Поиск */}
                         <div className="bg-white hidden md:flex flex-grow max-w-xl relative">
                             <input
                                 type="text"
@@ -120,11 +118,12 @@ const Header = () => {
                             <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-blue-500 cursor-pointer" size={20} />
                         </div>
 
-                        {/* Иконки пользователя */}
+                        {/* Иконки пользователя, избранного и корзины */}
                         <div className="flex items-center gap-2 sm:gap-4">
-                            <div className="p-2 hover:bg-slate-100 rounded-full cursor-pointer hidden sm:block">
+                            {/* ССЫЛКА НА АВТОРИЗАЦИЮ */}
+                            <Link to="/login" className="p-2 hover:bg-slate-100 rounded-full cursor-pointer hidden sm:block">
                                 <User size={24} className="text-blue-500" />
-                            </div>
+                            </Link>
 
                             <div className="relative p-2 hover:bg-slate-100 rounded-full cursor-pointer">
                                 <Heart size={24} className="text-blue-500" />
@@ -142,7 +141,7 @@ const Header = () => {
                         </div>
                     </div>
 
-                    {/* Поиск для мобилок (показываем только на очень маленьких экранах под лого) */}
+                    {/* Поиск для мобилок */}
                     <div className="mt-3 md:hidden relative">
                         <input
                             type="text"
@@ -154,7 +153,7 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* 3. Мобильное меню (выезжает при клике на бургер) */}
+            {/* 3. Мобильное меню */}
             {isMobileMenuOpen && (
                 <div className="lg:hidden fixed inset-0 z-[100] bg-white p-6 animate-in slide-in-from-left duration-300">
                     <div className="flex justify-between items-center mb-8">
@@ -163,6 +162,15 @@ const Header = () => {
                     </div>
 
                     <div className="space-y-6">
+                        {/* Добавил вход в мобильное меню */}
+                        <Link 
+                            to="/login" 
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="flex items-center gap-3 font-bold text-lg border-b pb-2 text-blue-600"
+                        >
+                            <User size={20} /> Войти в кабинет
+                        </Link>
+
                         <div className="font-bold text-lg border-b pb-2">Каталог</div>
                         {categories.map(cat => (
                             <a key={cat} href="#" className="block text-lg text-slate-700">{cat}</a>
@@ -170,7 +178,14 @@ const Header = () => {
 
                         <div className="font-bold text-lg border-b pb-2 pt-4">Информация</div>
                         {navLinks.map(link => (
-                            <a key={link.name} href={link.href} className="block text-slate-600">{link.name}</a>
+                            <Link 
+                                key={link.name} 
+                                to={link.href} 
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="block text-slate-600"
+                            >
+                                {link.name}
+                            </Link>
                         ))}
                     </div>
                 </div>

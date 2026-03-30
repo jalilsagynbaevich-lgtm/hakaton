@@ -8,7 +8,8 @@ import DeliveryPage from './pages/DeliveryPage/DeliveryPage'
 import PaymentPage from './pages/PaymantPage/PaymentPage'
 import PostsPage from './pages/PostsPage/PostsPage'
 import ProvidersPage from './pages/ProvidersPage/ProvidersPage'
-
+// 1. Импортируй созданный компонент авторизации
+import AuthPage from './pages/AuthPage/AuthPage' 
 
 const Layout = () => {
   return (
@@ -33,12 +34,13 @@ const App = () => {
           <Route path='/payment' element={<PaymentPage />} />
           <Route path='/articles' element={<PostsPage />} />
           <Route path='/suppliers' element={<ProvidersPage />} />
+          
+          {/* 2. Добавляем путь для страницы авторизации */}
+          <Route path='/login' element={<AuthPage />} />
         </Route>
       </Routes>
     </div>
   )
 }
-//  jasa emi 
-// header scrin
 
 export default App
